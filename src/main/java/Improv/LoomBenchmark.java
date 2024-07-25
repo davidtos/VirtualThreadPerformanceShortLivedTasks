@@ -35,7 +35,7 @@ public class LoomBenchmark {
         new Runner(opt).run();
     }
 
-    //@Benchmark
+    @Benchmark
     public long virtualThreadExecutor(Blackhole blackhole, ExecutionPlan plan) {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             benchmarkingMethod(blackhole, plan, executor);
