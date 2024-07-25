@@ -10,8 +10,6 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -55,7 +53,7 @@ public class LoomBenchmark {
         IntStream.range(0, 10_000).forEach(i ->
                 executor.submit(() -> {
                     try {
-                        String response1 =  fetchURL(URI.create("http://192.168.1.122:8080/v1/crawl/delay/" + plan.delay).toURL());
+                        String response1 =  fetchURL(URI.create("http://192.168.1.17:8080/v1/crawl/delay/" + plan.delay).toURL());
                         blackhole.consume(response1);
 
                         if ("2".equals(plan.numberOfCalls)) {
@@ -76,6 +74,6 @@ public class LoomBenchmark {
         }
     }
 
-
 }
+
 
